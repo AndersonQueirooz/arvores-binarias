@@ -62,4 +62,63 @@ public class ArvoreBinaria<T extends Comparable<T>> {
             System.out.print(atual.getConteudo() + " "); // Exibe o conteúdo do nó atual
         }
     }
+
+    public void remover(T conteudo) {
+        try {
+            BinNo<T> atual = this.raiz;
+            BinNo<T> pai = null;
+            BinNo<T> filho = null;
+            BinNo<T> temp = null;
+
+            while (atual != null && !atual.getConteudo().equals(conteudo)) {
+                pai = atual;
+                if (conteudo.compareTo(atual.getConteudo()) < 0) {
+                    atual = atual.getNoEsq();
+                } else {
+                    atual = atual.getNoDir();
+                }
+            }
+
+            if (atual == null) {
+                throw new NullPointerException("Conteúdo não encontrado na árvore. Bloco Try");
+            }
+
+            if (pai == null) {
+                if (atual.getNoDir() == null) {
+                    this.raiz = atual.getNoEsq();
+                } else if (atual.getNoEsq() == null) {
+                    this.raiz = atual.getNoDir();
+                } else {
+                    for (temp = atual, filho = atual.getNoEsq(); filho.getNoDir() != null; temp = filho, filho = filho
+                            .getNoEsq()) {
+                        if (filho != atual.getNoEsq()) {
+                            temp.setNoDir(filho.getNoEsq());
+                            filho.setNoEsq(raiz.getNoEsq());
+                        }
+                    }
+                    filho.setNoDir(raiz.getNoDir());
+                    raiz = filho;
+                }
+            } else if (atual.getNoDir() == null) {
+                if (pai.getNoEsq() == atual) {
+                    pai.setNoEsq(atual.getNoEsq());
+                } else {
+                    pai.setNoDir(atual.getNoEsq());
+                }
+                
+            }else if (atual.getNoEsq() == null) {
+                if (pai.getNoEsq() == atual) {
+                    pai.setNoEsq(atual.getNoDir());
+                } else {
+                    pai.setNoDir(atual.getNoDir());
+                }
+            } else {
+                
+            }
+
+        } catch (NullPointerException erro) {
+            System.out.println("Conteúdo não encontrado na árvore. Bloco Catch " + erro.getMessage());
+        }
+    }
+    
 }
