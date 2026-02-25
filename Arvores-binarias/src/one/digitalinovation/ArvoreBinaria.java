@@ -1,3 +1,4 @@
+package one.digitalinovation;
 public class ArvoreBinaria<T extends Comparable<T>> {
     
     private BinNo<T> raiz;
@@ -25,7 +26,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
     }
 
     public void exibirInOrdem() {
-        System.out.println("\n Exibindo In-Ordem:");
+        System.out.print("\n Exibindo In-Ordem:");
         exibirInOrdem(this.raiz); // Chama o método recursivo para exibir os nós em ordem
     }
 
@@ -38,7 +39,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
     }
 
     public void exibirPreOrdem() {
-        System.out.println("\n Exibindo Pré-Ordem:");
+        System.out.print("\n Exibindo Pré-Ordem:");
         exibirPreOrdem(this.raiz);
     }
 
@@ -51,7 +52,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
     }
     
     public void exibirPosOrdem() {
-        System.out.println("\n Exibindo Pós-Ordem:");
+        System.out.print("\n Exibindo Pós-Ordem:");
         exibirPosOrdem(this.raiz); // Chama o método recursivo para exibir os nós em pós-ordem
     }
 

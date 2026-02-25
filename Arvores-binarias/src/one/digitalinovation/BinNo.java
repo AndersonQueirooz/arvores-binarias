@@ -1,3 +1,4 @@
+package one.digitalinovation;
 public class BinNo<T extends Comparable<T>>{
     private T conteudo;
     private BinNo<T> noEsq;
